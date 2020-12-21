@@ -7,5 +7,7 @@ urlpatterns = [
     path('add',views.add_note_page,name='add_note_page'),
     path('create',views.add,name='add'),
     path('delete/<int:id>',views.delete,name='delete'),
+    path('update/<int:id>',views.update,name='update'),
+
 
 ]

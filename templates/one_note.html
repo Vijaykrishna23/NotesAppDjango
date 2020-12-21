@@ -6,13 +6,23 @@
     <title>Note</title>
   </head>
   <body>
-    <form action="/create" method="post">
+    {%if note%}  
+    <form action="/update/{{note.pk}}" method="post">
       {%csrf_token%}
       <input type="text" name="title" id="title" value="{{note.title}}" />
       <input type="text" name="desc" id="desc" value="{{note.description}}" />
-      <input type="submit" value="Add" />
+      <input type="submit" value="Update" />
       <a href="/">Back</a>
     </form>
+    {%else%}
+    <form action="/create" method="post">
+        {%csrf_token%}
+        <input type="text" name="title" id="title" value="{{note.title}}" />
+        <input type="text" name="desc" id="desc" value="{{note.description}}" />
+        <input type="submit" value="Add" />
+        <a href="/">Back</a>
+      </form>
+      {%endif%}
 
     <form action="/delete/{{note.pk}}" method="post">
       {%csrf_token%}

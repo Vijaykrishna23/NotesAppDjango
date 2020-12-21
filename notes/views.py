@@ -9,7 +9,7 @@ def index(req):
     notes = []
 
     if req.user.is_authenticated:
-        notes = Note.objects.filter(user=req.user)
+        notes = Note.objects.filter(user=req.user).order_by('-modified')
 
     
 
@@ -30,9 +30,7 @@ def add(req):
     desc = req.POST['desc']
 
     Note.objects.get_or_create(title=title,description=desc,user=req.user)
-
     
-
     return redirect('/')    
 
 def delete(req,id):
@@ -43,3 +41,11 @@ def delete(req,id):
         return redirect('/')    
 
     return redirect('/')
+
+def update(req,id):
+    note = Note.objects.get(pk=id)
+    note.title = req.POST['title']
+    note.description = req.POST['desc']
+    note.save()
+    return redirect('/')
+
