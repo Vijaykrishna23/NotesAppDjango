@@ -19,7 +19,7 @@ def register(req):
         user = User.objects.create_user(username=uname,password=password)
         print(user)
 
-        return redirect('login')
+        return redirect('accounts/login')
 
     return render(req,'register.html')
 
