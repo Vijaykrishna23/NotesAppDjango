@@ -43,7 +43,7 @@ def login(req):
         
 
         messages.info(req,'Invalid username or password')
-        return redirect('login')
+        return redirect('accounts:login')
         
        
     return render(req,'login.html')
