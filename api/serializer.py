@@ -13,4 +13,3 @@ class NoteSerializer(serializers.ModelSerializer):
         model = Note
         fields = ['id','title' , 'description','user','modified']
 
-s
