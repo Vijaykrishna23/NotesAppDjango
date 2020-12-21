@@ -14,12 +14,12 @@ def register(req):
 
         if User.objects.filter(username=uname).exists():
             messages.info(req,'Username taken')
-            return redirect('register')
+            return redirect('accounts:register')
 
         user = User.objects.create_user(username=uname,password=password)
         print(user)
 
-        return redirect('accounts/login')
+        return redirect('accounts:login')
 
     return render(req,'register.html')
 
